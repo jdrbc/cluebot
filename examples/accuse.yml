@@ -1,0 +1,24 @@
+setup:
+  # players starting with dealer
+  # solution is: green, kitchen, dagger
+  players:
+    - name: bob
+      # bob has cards: "plum", "hall"
+      card_count: 2
+    - name: joe
+      # joe has card: "scarlet"
+      card_count: 1
+    - name: meg
+      cards: "white"
+
+  cards:
+    suspects: ["white", "plum", "scarlet", "green"]
+    rooms: ["kitchen", "hall"]
+    weapons: ["dagger"]
+
+events:
+  - r: "nobody kitchen" # should set kitchen as answer
+  - accuse: "bob scarlet kitchen dagger" # bob's guess
+  - accuse: "joe plum kitchen dagger" # joe's guess
+  # should infer green, even though we don't know for sure what bob & joe's cards are
+  # (if they aren't dumb we could infer thier cards, but they could have guessed their own)

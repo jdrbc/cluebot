@@ -1,0 +1,24 @@
+setup:
+  # players starting with dealer
+  # solution is: green, kitchen, dagger
+  players:
+    - name: bob
+      # bob has cards: "plum", "hall"
+      card_count: 2
+    - name: joe
+      # joe has card: "scarlet"
+      card_count: 1
+    - name: meg
+      cards: "white"
+
+  cards:
+    suspects: ["white", "plum", "scarlet", "green"]
+    rooms: ["kitchen", "hall"]
+    weapons: ["dagger"]
+
+events:
+  - r: "nobody kitchen" # should set kitchen as answer
+  - q: "bob scarlet kitchen dagger" # bob's guess
+    a: "joe" # joe answers
+  - q: "joe plum kitchen dagger" # joe's guess
+    a: "bob"
